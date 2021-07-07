@@ -16,6 +16,3 @@ public class Budget {
         }
         return count;
     }
-
-
-출처 httpstosuccess.tistory.com90 [EI_HJ]
