@@ -1,29 +1,23 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public ArrayList<Integer> solution(int[] arr) {
+    public String solution(int[] arr) {
 
-        int quarter = 25;
-        int dime = 10;
-        int nickel = 5;
-        int penny = 1;
-
-        ArrayList<Integer> answer = new ArrayList<>();
+        int[] money = {25, 10, 5, 1};
+        StringBuilder answer = new StringBuilder();
 
         for (int i = 0; i < arr.length; i++) {
             int total = arr[i];
 
-            answer.add(total / quarter);
-            total %= quarter;
-            answer.add(total / dime);
-            total %= dime;
-            answer.add(total / nickel);
-            total %= nickel;
-            answer.add(total / penny);
+            for (int j = 0; j < money.length; j++) {
+                answer.append(total / money[j]).append(" ");
+                total %= money[j];
+            }
+
+            answer.append("\n");
         }
 
-        return answer;
+        return answer.toString();
     }
 
     public static void main(String[] args) {
@@ -36,14 +30,6 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        ArrayList<Integer> solution = m.solution(arr);
-        for (int i = 0; i < solution.size(); i++) {
-            if (i != 0 && i % 4 == 0) {
-                System.out.println();
-                System.out.print(solution.get(i) + " ");
-            } else {
-                System.out.print(solution.get(i) + " ");
-            }
-        }
+        System.out.print(m.solution(arr));
     }
 }
